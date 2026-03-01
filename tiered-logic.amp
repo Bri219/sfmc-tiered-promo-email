@@ -1,0 +1,54 @@
+%%[
+/* LOGIC FROM DATA EXTENSION */
+SET @firstName = [FirstName]
+SET @tier = [LoyaltyTier]
+SET @spend = [MonthlySpend]
+
+/* FIRST NAME LOGIC */
+IF NOT EMPTY(@firstName) THEN
+  SET @firstNameTrim = Trim(@firstName)
+  SET @finalName = Propercase(@firstNameTrim)
+ELSE
+  SET @finalName = "there"
+ENDIF
+
+/* LOGIC FOR DYNAMIC DISCOUNT CODE */
+
+/* LOGIC FOR SMS LOYALTY TIER < $100 */
+IF @pend < 100 THEN
+   IF @tier == "Bronze" THEN
+     SET @code = "BNZL12024"
+   ELSEIF @tier == "Silver" THEN
+     SET @code = "SVRL12024"
+   ELSEIF @tier == "Gold" THEN
+     SET @code = "GLDL12024"
+   ELSE 
+     SET @code = "PNDL12024"
+ ENDIF
+
+/* LOGIC FOR SMS LOYALTY TIER $100 - $500 */
+ELSEIF @spend >= 100 AND @monthlySpend <= 500 THEN
+   IF @tier == "Bronze" THEN
+     SET @code = "BNZL22024"
+   ELSEIF @tier == "Silver" THEN
+     SET @code = "SVRL22024"
+   ELSEIF @tier == "Gold" THEN
+     SET @code = "GLDL22024"
+   ELSE 
+     SET @code = "PNDL22024"
+  ENDIF
+
+/* LOGIC FOR SMS LOYALTY TIER > $500 */
+ELSE
+   IF @tier == "Bronze" THEN
+     SET @code = "BNZL32024"
+   ELSEIF @tier == "Silver" THEN
+     SET @code = "SVRL32024"
+   ELSEIF @tier == "Gold" THEN
+     SET @code = "GLDL32024"
+   ELSE 
+     SET @code = "PNDL32024"
+   ENDIF
+ ENDIF 
+
+]%%
