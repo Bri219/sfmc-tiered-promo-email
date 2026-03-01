@@ -1,0 +1,7 @@
+%%[ IF @spend > 500 THEN ]%%
+   Hi %%=v(@finalName)=%%! 🎉 Thank you for being a top spender this month! As a token of our appreciation, here’s a 20% discount code just for you: %%=v(@code)=%%. Use it on your next visit and earn big! 💸
+%%[ ELSEIF @spend > 100 AND @spend <= 500 THEN ]%%
+   Hi %%=v(@finalName)=%%! 👏 We appreciate your loyalty! Enjoy a 15% discount on your next visit with code %%=v(@code)=%%. Thank you for spending with us! 😊
+%%[ ELSE ]%%
+   Hi %%=v(@finalName)=%%! 🌟 Thanks for spending with us! Here’s a 10% discount code for your next visit: %%=v(@code)=%%. We hope to see you again soon! 🛍️
+%%[ ENDIF ]%%
